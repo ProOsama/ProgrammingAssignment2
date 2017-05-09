@@ -1,11 +1,12 @@
-## Put comments here that give an overall description of what your
-## functions do
-require(MASS)
-## Write a short comment describing this function
+## idea behind this task thab enable you to cache a matrix and its inverse to get them any time without needing to calculate inverse again
+## makeCacheMatrix that set matrix and its inverse and cacheSolve that calculate inverse and send it to makeCacheMatrix 
 
-makeCacheMatrix <- function(x = matrix()) {
+
+##makeCacheMatrix function that set a matrix and set its inverse and get them back 
+makeCacheMatrix <- function(x = matrix()) {                
 inv <- NULL
-  set <- function(y){
+  ##set matrix x 
+  set <- function(y){               
     x <<- y
     inv <<- NULL
   }
@@ -18,8 +19,8 @@ inv <- NULL
 }
 
 
-## Write a short comment describing this function
 
+##check first if matrix X was caculated it inverse before , if invesre is null , calculate it by solve() and set it  
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
         inv <- x$getinv()
@@ -28,7 +29,7 @@ cacheSolve <- function(x, ...) {
     return(inv)
   }
   data <- x$get()
-  inv <- ginv(data, ...)
+  inv <- solve(data, ...)
   x$setmean(inv)
   inv
 }
